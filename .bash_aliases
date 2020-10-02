@@ -13,3 +13,5 @@ alias gdb='gdb -q'
 alias aslroff='sudo echo 0 | sudo tee /proc/sys/kernel/randomize_va_space'
 alias aslron='sudo echo 2 | sudo tee /proc/sys/kernel/randomize_va_space'
 alias aslr='cat /proc/sys/kernel/randomize_va_space'
+alias nvim=vim
+alias bat=cat
