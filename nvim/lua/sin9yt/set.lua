@@ -10,6 +10,10 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.infercase = true
+
 vim.opt.wrap = false
 
 vim.opt.swapfile = false
@@ -19,6 +23,7 @@ vim.opt.undofile = true
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.cursorline = true
 
 vim.opt.termguicolors = true
 
