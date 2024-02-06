@@ -11,14 +11,12 @@ return {
             end)
 
             vim.keymap.set("n", "[d", function()
-                require("trouble").next({skip_groups = true, jump = true});
+                require("trouble").next({ skip_groups = true, jump = true })
             end)
 
             vim.keymap.set("n", "]d", function()
-                require("trouble").prev({skip_groups = false, jump = true});
+                require("trouble").prev({ skip_groups = false, jump = true })
             end)
-
-
-        end
+        end,
     },
 }
