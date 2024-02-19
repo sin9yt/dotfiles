@@ -98,12 +98,14 @@ return {
             },
         })
 
+        -- linters, formatters and DAP tool installers
         require("mason-tool-installer").setup({
             ensure_installed = {
                 "prettier", -- prettier formatter
                 "stylua",   -- lua formatter
                 "isort",    -- python formatter
                 "black",    -- python formatter
+                "flake8",   -- python linter
             },
         })
     end,
