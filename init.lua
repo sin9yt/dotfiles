@@ -1,2 +1,0 @@
-require("sin9yt")
-
