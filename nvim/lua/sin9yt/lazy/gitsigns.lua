@@ -1,7 +1,7 @@
 return {
-    "tpope/vim-fugitive",
+    "lewis6991/gitsigns.nvim",
     dependencies = {
-        "lewis69291/gitsigns.nvim",
+        "tpope/vim-fugitive",
     },
 
     config = function ()
