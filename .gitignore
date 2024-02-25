@@ -1,1 +1,26 @@
+# Vim
+.netrwhist
+*.sw[op]
+
+# Lazy loader
 lazy-lock.json
+
+# Backup files
+backup/*
+*.bak
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Binaries
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Logs
+*.log
+*.sql

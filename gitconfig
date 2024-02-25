@@ -1,0 +1,37 @@
+[core]
+    editor = vim
+[alias]
+    aa = add --all
+    ap = add --patch
+    b = branch
+    ca = commit --amend
+    cara = commit --amend --reset-author
+    co = checkout
+    ci = commit
+    cp = cherry-pick
+    cpc = cherry-pick --continue
+    cpa = cherry-pick --abort
+    d = diff
+    dc = diff --cached
+    fo = fetch origin
+    fop = fetch origin --prune
+    fp = format-patch
+    l = "!. ~/.githelpers && pretty_git_log"
+    lf = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --decorate --numstat --date=short
+    lsnv = ls-files -- . ':!vendor'
+    rb = "!r() { git rebase -i HEAD~$1; }; r"
+    rc = rebase --continue
+    ra = rebase --abort
+    rs = rebase --skip
+    s = status -s
+    st = status
+    sl = stash list
+    sp = stash pop
+    sd = stash drop stash@{0}
+    ss = show stash@{0}
+    type = cat-file -t
+    dump = cat-file -p
+    qclone = clone --depth 1
+    subup = submodule update --recursive
+    find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+    show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
