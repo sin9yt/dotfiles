@@ -45,5 +45,9 @@ return {
                 },
             },
         })
+        -- keymap for jumping to sticky context
+        vim.keymap.set("n", "]t", function()
+            require("treesitter-context").go_to_context(vim.v.count1)
+        end, { silent = true })
     end,
 }
