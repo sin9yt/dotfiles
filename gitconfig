@@ -1,37 +1,68 @@
 [core]
     editor = vim
+
 [alias]
     aa = add --all
     ap = add --patch
     b = branch
+    co = checkout
+
+    # commit
     ca = commit --amend
     cara = commit --amend --reset-author
-    co = checkout
+    carane = commit --amend --reset-author --no-edit
     ci = commit
+
+    # cherry-pick
     cp = cherry-pick
     cpc = cherry-pick --continue
     cpa = cherry-pick --abort
+
+    # diff
     d = diff
     dc = diff --cached
+         
+    # Edit conflicting files
+    ec = "!$EDITOR $(git diff --name-only --diff-filter=U --relative)"
+    # Add conflicting files
+    ac = "!git add $(git diff --name-only --diff-filter=U --relative)"
+
+    # fetch
     fo = fetch origin
     fop = fetch origin --prune
     fp = format-patch
+
+    # log
     l = "!. ~/.githelpers && pretty_git_log"
     lf = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --decorate --numstat --date=short
+    lff = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --shortstat --date=short
     lsnv = ls-files -- . ':!vendor'
+
+    # rebase
     rb = "!r() { git rebase -i HEAD~$1; }; r"
     rc = rebase --continue
     ra = rebase --abort
     rs = rebase --skip
+
+    # reset
+    rem = reset --mixed
+    reh = reset --hard
+    com = commit -c ORIG_HEAD
+
+    # status
     s = status -s
     st = status
+
+    # stash
     sl = stash list
     sp = stash pop
     sd = stash drop stash@{0}
     ss = show stash@{0}
+
     type = cat-file -t
     dump = cat-file -p
     qclone = clone --depth 1
     subup = submodule update --recursive
+    gh = rev-parse @
     find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
     show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
