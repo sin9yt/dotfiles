@@ -25,5 +25,11 @@ return {
             suppressed_dirs = { '~/', '~/Downloads', '/' },
             -- log_level = 'debug',
         },
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = { indent = { char = "▏" } },
+
     }
 }
