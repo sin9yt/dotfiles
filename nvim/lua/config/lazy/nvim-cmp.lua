@@ -1,5 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter", -- Load on insert mode enter
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",

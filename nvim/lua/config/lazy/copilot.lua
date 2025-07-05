@@ -1,5 +1,6 @@
 return {
     "olimorris/codecompanion.nvim",
+    event = "VeryLazy", -- Load on very lazy event
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
@@ -18,8 +19,7 @@ return {
                     return require("codecompanion.adapters").extend("copilot", {
                         schema = {
                             model = {
-                                -- default = "claude-3.5-sonnet",
-                                default = "gpt-4o-2024-08-06",
+                                default = "gpt-4o",
                             },
                         },
                     })
@@ -38,5 +38,6 @@ return {
         -- keymaps
         vim.keymap.set("n", "<leader>ct", codecompanion.toggle, {})
         vim.keymap.set("n", "<leader>cc", codecompanion.chat, {})
+        vim.keymap.set("n", "<leader>ca", codecompanion.actions, {})
     end,
 }
