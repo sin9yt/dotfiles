@@ -13,6 +13,10 @@ return {
     config = function ()
         local codecompanion = require("codecompanion")
 
+        -- add spinner animation during model thinking
+        local spinner = require("config.lazy.helper.fidget-spinner")
+        spinner:init()
+
         codecompanion.setup({
             adapters = {
                 copilot = function()
@@ -31,6 +35,26 @@ return {
                 },
                 inline = {
                     adapter = "copilot",
+                },
+            },
+            display = {
+                chat = {
+                    intro_message = "Hi Copilot here!✨ Press ? for options",
+                    show_settings = true,
+                },
+                inline = {
+                    layout = "buffer", -- vertical|horizontal|buffer
+                },
+            },
+            keymaps = {
+                send = {
+                    callback = function(chat)
+                        vim.cmd("stopinsert")
+                        chat:submit()
+                        chat:add_buf_message({ role = "llm", content = "" })
+                    end,
+                    index = 1,
+                    description = "Send",
                 },
             },
         })
