@@ -33,14 +33,6 @@ return {
                     adapter = "copilot",
                 },
             },
-            keys = {
-                ["<leader>cc"] = "toggle",
-                ["<leader>ca"] = "code_actions",
-                ["<leader>ct"] = "generate_tests",
-                ["<leader>cr"] = "review_code",
-                ["<leader>ce"] = "explain_code",
-                ["<leader>cs"] = "suggest_code",
-            },
         })
 
         -- keymaps

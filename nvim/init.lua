@@ -1,2 +1,2 @@
-require("sin9yt")
+require("config")
 

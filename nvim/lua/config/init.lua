@@ -1,8 +1,8 @@
 -- Initializes in order
 
-require("sin9yt.remap")
-require("sin9yt.set")
-require("sin9yt.lazy_init")
+require("config.remap")
+require("config.set")
+require("config.lazy_init")
 
 -- Highlight on yank
 local yank_group = vim.api.nvim_create_augroup("HighlightYank", {})

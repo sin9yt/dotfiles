@@ -31,7 +31,8 @@ return {
         main = "ibl",
         opts = {
             indent = { char = "▏" },
-            scope = { show_start = false } },
+            scope = { show_start = false }
+        },
 
     }
 }

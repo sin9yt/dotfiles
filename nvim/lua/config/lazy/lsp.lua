@@ -12,6 +12,7 @@ return {
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
         require("fidget").setup({})
 
+
         ON_ATTACH = function(client, bufnr)
             local opts = { buffer = bufnr, remap = false }
             local builtin = require("telescope.builtin")
@@ -77,28 +78,23 @@ return {
                 "pyright",
                 "rust_analyzer",
             },
-            handlers = {
-                function(server_name) -- default handler
-                    require("lspconfig")[server_name].setup({
-                        capabilities = capabilities,
-                        on_attach = ON_ATTACH,
-                    })
-                end,
+        })
 
-                ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup({
-                        capabilities = capabilities,
-                        on_attach = ON_ATTACH,
-                        settings = {
-                            Lua = {
-                                diagnostics = {
-                                    globals = { "vim" },
-                                },
-                            },
-                        },
-                    })
-                end,
+        -- native lsp server setup
+        vim.lsp.config("*", { -- default handler
+            capabilities = capabilities,
+            on_attach = ON_ATTACH,
+        })
+
+        vim.lsp.config("lua_ls", {
+            capabilities = capabilities,
+            on_attach = ON_ATTACH,
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                },
             },
         })
 
