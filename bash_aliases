@@ -17,6 +17,3 @@ alias aslr='cat /proc/sys/kernel/randomize_va_space'
 alias vi='vim'
 alias vim='$(command -v nvim || echo vim)'
 alias getpass='openssl rand -base64 20'
-
-# directory aliases
-alias dot='cd $HOME/.dotfiles'
