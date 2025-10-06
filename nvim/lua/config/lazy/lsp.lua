@@ -103,8 +103,8 @@ return {
             ensure_installed = {
                 "prettier", -- prettier formatter
                 "stylua",   -- lua formatter
-                "isort",    -- python formatter
-                "black",    -- python formatter
+                -- "isort",    -- python formatter
+                -- "black",    -- python formatter
                 "ruff",   -- python linter
             },
         })

@@ -12,7 +12,7 @@ return {
                 markdown = { "prettier" },
                 graphql = { "prettier" },
                 lua = { "stylua" },
-                python = { "isort", "black" },
+                python = { "ruff" },
             },
             -- Disable format_on_save by default
             -- format_on_save = {
