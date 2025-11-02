@@ -1,0 +1,56 @@
+[ui]
+diff-formatter = ["difft", "--color=always", "$left", "$right"]
+default-command = "status"
+editor = "nvim"
+
+[revsets]
+log = "(trunk()..@):: | (trunk()..@)-"
+
+[aliases]
+c = ["commit"]
+ci = ["commit", "--interactive"]
+e = ["edit"]
+i = ["git", "init", "--colocate"]
+l = ["log"]
+ll = ["log", "-T", "log_with_files"]
+pull = ["git", "fetch"]
+r = ["rebase"]
+s = ["squash"]
+si = ["squash", "--interactive"]
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+z = ["bookmark", "list"]
+za = ["bookmark", "list", "-a"]
+
+[revset-aliases]
+'recent_work' = 'ancestors(visible_heads(), 3) & mutable()'
+'user(x)' = 'author(x) | committer(x)'
+
+[templates]
+log_node = '''
+if(self && !current_working_copy && !immutable && !conflict && in_branch(self),
+  "◇",
+  builtin_log_node
+)
+'''
+
+[template-aliases]
+"in_branch(commit)" = 'commit.contained_in("immutable_heads()..bookmarks()")'
+"format_timestamp(timestamp)" = "timestamp"
+log_with_files = '''
+if(root,
+  format_root_commit(self),
+  label(if(current_working_copy, "working_copy"),
+    concat(
+      format_short_commit_header(self) ++ "\n",
+      separate(" ",
+        if(empty, label("empty", "(empty)")),
+        if(description,
+          description.first_line(),
+          label(if(empty, "empty"), description_placeholder),
+        ),
+      ) ++ "\n",
+      if(self.contained_in("recent_work"), diff.summary()),
+    ),
+  )
+)
+'''
